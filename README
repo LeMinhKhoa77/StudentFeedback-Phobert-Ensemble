@@ -1,0 +1,92 @@
+```markdown
+# Student Feedback Analyzer using PhoBERT-base-v2  
+**Multi-task Learning + 5-Fold Cross-Validation Ensemble**
+
+Đồ án cuối kỳ – Môn Xử lý Ngôn ngữ Tự nhiên  
+Phân loại đồng thời **cảm xúc** (Positive / Negative) và **chủ đề** (4 lớp) từ phản hồi sinh viên tiếng Việt.
+
+### Thông tin dự án
+- Mô hình nền: `vinai/phobert-base-v2`  
+- Kiến trúc: Multi-task learning (2 classification heads)  
+- Ensemble: 5-Fold Cross-Validation + Majority Voting  
+- Framework: PyTorch, Transformers, Gradio  
+- Giao diện demo: Gradio (file `src/demo.py`)
+
+### Kết quả trên tập test
+
+| Nhiệm vụ                  | Accuracy | Macro F1 |
+|---------------------------|----------|----------|
+| Phân loại cảm xúc         | 89.7%    | 89.4%    |
+| Phân loại chủ đề (4 lớp)  | 92.3%    | 92.1%    |
+
+### Danh sách chủ đề
+| Nhãn | Chủ đề                |
+|------|------------------------|
+| 0    | Cơ sở vật chất        |
+| 1    | Giảng viên             |
+| 2    | Khác                   |
+| 3    | Chương trình đào tạo   |
+
+### Cấu trúc thư mục
+```
+StudentFeedback-Phobert-Ensemble/
+├── notebooks/
+│   └── runcode.ipynb              ← Chạy toàn bộ dự án trên Google Colab (1 click)
+├── src/
+│   ├── __init__.py
+│   ├── dataset.py
+│   ├── preprocess.py
+│   ├── utils.py
+│   ├── trainer.py
+│   ├── main.py                    ← Huấn luyện 5-fold
+│   ├── main_inference.py          ← Ensemble inference
+│   └── demo.py                    ← Giao diện Gradio 
+├── data/
+│   └── sample/                    ← 3 file CSV mẫu (450 feedback)
+│       ├── feedback_std1.csv
+│       ├── feedback_std2.csv
+│       └── feedback_std3.csv
+├── saved_models/                  ← 5 file .pt (~2.7 GB – không push lên GitHub)
+├── demo/                          
+├── requirements.txt
+├── .gitignore
+└── README.md
+```
+
+### Cách sử dụng
+
+#### 1. Chạy nhanh nhất (khuyến nghị)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/<YOUR_GITHUB_USERNAME>/StudentFeedback-Phobert-Ensemble/blob/main/notebooks/runcode.ipynb)
+
+#### 2. Chạy trên máy local
+```bash
+git clone https://github.com/<LeMinhKhoa77>/StudentFeedback-Phobert-Ensemble.git
+cd StudentFeedback-Phobert-Ensemble
+
+pip install -r requirements.txt
+
+# Huấn luyện 5-fold (chỉ chạy lần đầu)
+python src/main.py
+
+# Chạy giao diện demo
+python src/demo.py
+```
+
+#### 3. Deploy lên Hugging Face Spaces (nếu muốn chạy online 24/7)
+- Tạo Space mới → chọn SDK “Gradio”  
+- File chính: `src/demo.py`  
+- Hoặc đổi tên `demo.py` → `app.py` khi deploy (HF Spaces ưu tiên tên này)
+
+### Thành viên thực hiện
+- **Họ và tên**: Lê Minh Khoa   
+- **Lớp**: Khoa học dữ liệu K45
+- **Năm học**: 2025-2026
+
+### Giảng viên hướng dẫn
+TS Lê Quang Hùng
+
+Cảm ơn thầy đã xem xét bài làm  
+
+Tháng 11/2025
+```
+

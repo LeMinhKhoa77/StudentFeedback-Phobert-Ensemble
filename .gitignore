@@ -1,0 +1,18 @@
+# Bỏ qua model nặng
+saved_models/
+*.pt
+*.pth
+
+# Bỏ qua file Excel, CSV lớn
+*.xlsx
+*.csv
+
+# Bỏ qua thư mục tạm của Python
+__pycache__/
+*.pyc
+
+# Bỏ qua Jupyter
+.ipynb_checkpoints/
+
+# Bỏ qua file môi trường
+.env
