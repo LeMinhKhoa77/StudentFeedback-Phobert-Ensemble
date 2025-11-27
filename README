@@ -42,10 +42,9 @@ StudentFeedback-Phobert-Ensemble/
 │   ├── main_inference.py          ← Ensemble inference
 │   └── demo.py                    ← Giao diện Gradio 
 ├── data/
-│   └── sample/                    ← 3 file CSV mẫu (450 feedback)
-│       ├── feedback_std1.csv
-│       ├── feedback_std2.csv
-│       └── feedback_std3.csv
+│   ├── dataframe1.csv
+│   └── dataframe2.csv
+│   
 ├── saved_models/                  ← 5 file .pt (~2.7 GB – không push lên GitHub)
 ├── demo/                          
 ├── requirements.txt
